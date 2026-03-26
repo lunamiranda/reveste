@@ -17,7 +17,6 @@ pub fn main(init: std.process.Init) !void {
     defer server.deinit();
 
     _ = server.get("/", indexHandler);
-
     _ = server.get("/up", healthCheck);
     _ = server.get("/problema", problemaHandler);
     _ = server.get("/solucao", solucaoHandler);
@@ -28,7 +27,6 @@ pub fn main(init: std.process.Init) !void {
     _ = server.post("/doar", doarHandler);
     _ = server.get("/agendar", agendarHandler);
     _ = server.post("/agendar", agendarSubmitHandler);
-
     _ = server.get("/api/ultima-doacao", ultimaDoacaoHandler);
 
     _ = server.get("/assets/*", spider.static.serve);
