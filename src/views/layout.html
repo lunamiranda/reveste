@@ -44,6 +44,12 @@
       }
 
       document.body.addEventListener('htmx:afterSwap', function(evt) {
+        // Close mobile menu on navigation
+        if (navLinks) {
+          navLinks.classList.remove('open');
+        }
+
+        // Update active nav link
         const url = window.location.pathname;
         document.querySelectorAll('.rv-links a').forEach(link => {
           link.parentElement.classList.remove('active');
