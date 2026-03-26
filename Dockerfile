@@ -21,7 +21,7 @@ WORKDIR /app
 COPY --from=builder /app/zig-out/bin/reveste .
 COPY --from=builder /app/assets assets/
 
-EXPOSE 8080
+EXPOSE 8081
 
 ENV LOG_LEVEL=warn
 
