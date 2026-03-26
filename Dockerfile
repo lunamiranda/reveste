@@ -25,4 +25,4 @@ EXPOSE 8080
 
 ENV LOG_LEVEL=warn
 
-CMD ["./smoney"]
+CMD ["./reveste"]
