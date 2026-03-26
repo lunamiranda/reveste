@@ -1,3 +1,8 @@
+/* =====================
+   FONTES
+   ===================== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap');
+
 :root {
     --brand-1: #E8442A;
     --brand-2: #F4A024;
@@ -823,7 +828,6 @@ ul {
 /* =====================
    FONTES
    ===================== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;600;700;800&display=swap');
 
 /* =====================
    RESET BASE
