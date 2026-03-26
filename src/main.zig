@@ -1,6 +1,12 @@
 const std = @import("std");
 const spider = @import("spider");
 
+fn healthCheck(alloc: std.mem.Allocator, _: *spider.Request) !spider.Response {
+    var response = try spider.Response.json(alloc, .{ .msg = "pong" });
+    response.status = .ok;
+    return response;
+}
+
 pub fn main(init: std.process.Init) !void {
     const arena: std.mem.Allocator = init.arena.allocator();
     const io = init.io;
@@ -11,6 +17,8 @@ pub fn main(init: std.process.Init) !void {
     defer server.deinit();
 
     _ = server.get("/", indexHandler);
+
+    _ = server.get("/up", healthCheck);
     _ = server.get("/problema", problemaHandler);
     _ = server.get("/solucao", solucaoHandler);
     _ = server.get("/como-funciona", comoFuncionaHandler);
