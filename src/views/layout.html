@@ -15,13 +15,13 @@
             <a href="/"><img src="/assets/logo.png" alt="ReVeste" height="24"></a>
         </div>
         <ul class="rv-links">
-            <li {% if current == '/' %}class="active"{% endif %}><a href="/">Início</a></li>
-            <li {% if current == '/problema' %}class="active"{% endif %}><a href="/problema">Problema</a></li>
-            <li {% if current == '/solucao' %}class="active"{% endif %}><a href="/solucao">Solução</a></li>
-            <li {% if current == '/como-funciona' %}class="active"{% endif %}><a href="/como-funciona">Como funciona</a></li>
-            <li {% if current == '/impacto' %}class="active"{% endif %}><a href="/impacto">Impacto</a></li>
-            <li {% if current == '/sobre' %}class="active"{% endif %}><a href="/sobre">Sobre nós</a></li>
-            <li {% if current == '/doar' %}class="active"{% endif %}><a href="/doar">Doação</a></li>
+            <li {% if current == '/' %}class="active"{% endif %}><a href="/" hx-get="/" hx-target="#main" hx-push-url="true">Início</a></li>
+            <li {% if current == '/problema' %}class="active"{% endif %}><a href="/problema" hx-get="/problema" hx-target="#main" hx-push-url="true">Problema</a></li>
+            <li {% if current == '/solucao' %}class="active"{% endif %}><a href="/solucao" hx-get="/solucao" hx-target="#main" hx-push-url="true">Solução</a></li>
+            <li {% if current == '/como-funciona' %}class="active"{% endif %}><a href="/como-funciona" hx-get="/como-funciona" hx-target="#main" hx-push-url="true">Como funciona</a></li>
+            <li {% if current == '/impacto' %}class="active"{% endif %}><a href="/impacto" hx-get="/impacto" hx-target="#main" hx-push-url="true">Impacto</a></li>
+            <li {% if current == '/sobre' %}class="active"{% endif %}><a href="/sobre" hx-get="/sobre" hx-target="#main" hx-push-url="true">Sobre nós</a></li>
+            <li {% if current == '/doar' %}class="active"{% endif %}><a href="/doar" hx-get="/doar" hx-target="#main" hx-push-url="true">Doação</a></li>
         </ul>
         <button class="rv-hamburger" id="menuBtn" aria-label="Abrir menu">
             <span></span>
@@ -30,7 +30,9 @@
         </button>
     </nav>
 
-    {% template "content" %}
+    <main id="main">
+        {% template "content" %}
+    </main>
 
     <script>
       const menuBtn = document.getElementById('menuBtn');
@@ -40,6 +42,16 @@
           navLinks.classList.toggle('open');
         });
       }
+
+      document.body.addEventListener('htmx:afterSwap', function(evt) {
+        const url = window.location.pathname;
+        document.querySelectorAll('.rv-links a').forEach(link => {
+          link.parentElement.classList.remove('active');
+          if (link.getAttribute('href') === url) {
+            link.parentElement.classList.add('active');
+          }
+        });
+      });
     </script>
 </body>
 </html>
