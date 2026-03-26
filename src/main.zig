@@ -16,22 +16,21 @@ pub fn main(init: std.process.Init) !void {
     });
     defer server.deinit();
 
-    _ = server.get("/", indexHandler);
-    _ = server.get("/up", healthCheck);
-    _ = server.get("/problema", problemaHandler);
-    _ = server.get("/solucao", solucaoHandler);
-    _ = server.get("/como-funciona", comoFuncionaHandler);
-    _ = server.get("/impacto", impactoHandler);
-    _ = server.get("/sobre", sobreHandler);
-    _ = server.get("/doar", doarPageHandler);
-    _ = server.post("/doar", doarHandler);
-    _ = server.get("/agendar", agendarHandler);
-    _ = server.post("/agendar", agendarSubmitHandler);
-    _ = server.get("/api/ultima-doacao", ultimaDoacaoHandler);
-
-    _ = server.get("/assets/*", spider.static.serve);
-
-    server.listen() catch |err| {
+    server
+        .get("/", indexHandler)
+        .get("/up", healthCheck)
+        .get("/problema", problemaHandler)
+        .get("/solucao", solucaoHandler)
+        .get("/como-funciona", comoFuncionaHandler)
+        .get("/impacto", impactoHandler)
+        .get("/sobre", sobreHandler)
+        .get("/doar", doarPageHandler)
+        .post("/doar", doarHandler)
+        .get("/agendar", agendarHandler)
+        .post("/agendar", agendarSubmitHandler)
+        .get("/api/ultima-doacao", ultimaDoacaoHandler)
+        .get("/assets/*", spider.static.serve)
+        .listen() catch |err| {
         std.log.err("server error: {}", .{err});
         return err;
     };
