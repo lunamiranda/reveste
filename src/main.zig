@@ -11,7 +11,7 @@ pub fn main(init: std.process.Init) !void {
     const arena: std.mem.Allocator = init.arena.allocator();
     const io = init.io;
 
-    const server = try spider.Spider.init(arena, io, "127.0.0.1", 8081, .{
+    const server = try spider.Spider.init(arena, io, "0.0.0.0", 8081, .{
         .layout = @embedFile("views/layout.html"),
     });
     defer server.deinit();
