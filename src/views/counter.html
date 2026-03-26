@@ -1,0 +1,11 @@
+{% block "content" %}
+<div class="counter">{{ count }}</div>
+<div class="buttons">
+    <button hx-post="/dec" hx-target="#counter-wrapper" hx-swap="innerHTML">
+        -
+    </button>
+    <button hx-post="/inc" hx-target="#counter-wrapper" hx-swap="innerHTML">
+        +
+    </button>
+</div>
+{% end %}

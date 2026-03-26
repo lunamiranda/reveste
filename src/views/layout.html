@@ -1,0 +1,45 @@
+{% block "base" %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% template "title" %}</title>
+    <script src="https://unpkg.com/htmx.org@2.0.0"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+    <nav class="rv-nav">
+        <div class="rv-logo">
+            <a href="/"><img src="/assets/logo.png" alt="ReVeste" height="24"></a>
+        </div>
+        <ul class="rv-links">
+            <li {% if current == '/' %}class="active"{% endif %}><a href="/">Início</a></li>
+            <li {% if current == '/problema' %}class="active"{% endif %}><a href="/problema">Problema</a></li>
+            <li {% if current == '/solucao' %}class="active"{% endif %}><a href="/solucao">Solução</a></li>
+            <li {% if current == '/como-funciona' %}class="active"{% endif %}><a href="/como-funciona">Como funciona</a></li>
+            <li {% if current == '/impacto' %}class="active"{% endif %}><a href="/impacto">Impacto</a></li>
+            <li {% if current == '/sobre' %}class="active"{% endif %}><a href="/sobre">Sobre nós</a></li>
+            <li {% if current == '/doar' %}class="active"{% endif %}><a href="/doar">Doação</a></li>
+        </ul>
+        <button class="rv-hamburger" id="menuBtn" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    {% template "content" %}
+
+    <script>
+      const menuBtn = document.getElementById('menuBtn');
+      const navLinks = document.querySelector('.rv-links');
+      if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+          navLinks.classList.toggle('open');
+        });
+      }
+    </script>
+</body>
+</html>
+{% end %}

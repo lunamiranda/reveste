@@ -1,0 +1,100 @@
+{% block "title" %}ReVeste — Home{% end %}
+
+{% block "content" %}
+<section class="rv-hero">
+  <div class="rv-bg-collage" id="bgCollage"></div>
+
+  <div class="rv-left">
+    <div class="rv-eyebrow">
+      <div class="rv-eyebrow-line"></div>
+      <span>Ação social · Feira de Santana</span>
+    </div>
+
+    <h1 class="rv-title">
+      <img src="/assets/logo.png" alt="ReVeste" class="rv-title-logo">
+    </h1>
+
+    <p class="rv-slogan">
+      Roupas que aquecem vidas<br>e revelam humanidades invisíveis.
+    </p>
+
+    <a href="/solucao" class="rv-cta">
+      Conheça a solução
+      <span class="rv-cta-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="rv-divider" id="divider"></div>
+
+  <div class="rv-right">
+    <div class="rv-about-tag">
+      <span>O projeto</span>
+    </div>
+
+    <h2 class="rv-about-title">
+      Uma coleta de roupas que vai além do tecido — é sobre enxergar quem está nas calçadas.
+    </h2>
+
+    <p class="rv-about-body">
+      O <strong>ReVeste</strong> é um projeto estudantil de ação social que coleta doações de roupas e as distribui diretamente para moradores de rua. Sem fins lucrativos, sem bazar, sem brecho — apenas acolhimento. Acreditamos que uma peça doada pode ser o primeiro sinal de que alguém se importa. O projeto nasce da investigação da realidade de pessoas invisibilizadas nas nossas cidades, e da convicção de que estudantes podem — e devem — agir.
+    </p>
+
+    <div class="rv-stats">
+      <div class="rv-stat rv-stat--red">
+        <span class="rv-stat-n">365 mil</span>
+        <span class="rv-stat-l">em situação de rua no Brasil (IBGE)</span>
+      </div>
+      <div class="rv-stat rv-stat--blue">
+        <span class="rv-stat-n">0 lucro</span>
+        <span class="rv-stat-l">100% sem fins lucrativos</span>
+      </div>
+      <div class="rv-stat rv-stat--green">
+        <span class="rv-stat-n">Você</span>
+        <span class="rv-stat-l">pode fazer a diferença</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const colors = [
+    '#e63946','#457b9d','#2d6a4f','#f4a261','#8ecae6','#e9c46a',
+    '#b5838d','#6d6875','#264653','#f77f00','#7209b7','#4cc9f0',
+    '#90be6d','#43aa8b','#e07a5f','#c77dff','#ff6b6b','#118ab2',
+    '#ffd166','#06d6a0','#ef233c','#f72585','#3a86ff','#06a77d',
+  ];
+
+  function randomPattern(c) {
+    const opts = [
+      c, c, c,
+      `repeating-linear-gradient(45deg,${c} 0 3px,transparent 3px 8px)`,
+      `repeating-linear-gradient(0deg,${c} 0 2px,transparent 2px 6px)`,
+      `repeating-linear-gradient(90deg,${c} 0 2px,transparent 2px 5px)`,
+    ];
+    return opts[Math.floor(Math.random() * opts.length)];
+  }
+
+  const bg = document.getElementById('bgCollage');
+  for (let i = 0; i < 200; i++) {
+    const d = document.createElement('div');
+    d.className = 'rv-bg-patch';
+    const c = colors[Math.floor(Math.random() * colors.length)];
+    d.style.background = randomPattern(c);
+    d.style.transform = `rotate(${(Math.random()-0.5)*12}deg) scale(${0.8+Math.random()*0.4})`;
+    bg.appendChild(d);
+  }
+
+  const divColors = ['#e63946','#f4a261','#e9c46a','#2d6a4f','#457b9d','#b5838d','#8ecae6','#c77dff'];
+  const divider = document.getElementById('divider');
+  for (let i = 0; i < 14; i++) {
+    const p = document.createElement('div');
+    p.className = 'rv-div-piece';
+    const c = divColors[i % divColors.length];
+    const w = 8 + Math.floor(Math.random() * 22);
+    const h = 22 + Math.floor(Math.random() * 28);
+    const rot = (Math.random()-0.5) * 25;
+    p.style.cssText = `width:${w}px;height:${h}px;background:${c};transform:rotate(${rot}deg);opacity:${0.5+Math.random()*0.5};border-radius:2px;`;
+    divider.appendChild(p);
+  }
+</script>
+{% end %}

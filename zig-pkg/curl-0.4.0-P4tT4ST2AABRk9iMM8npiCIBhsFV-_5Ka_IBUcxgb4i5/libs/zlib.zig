@@ -1,0 +1,47 @@
+const std = @import("std");
+
+pub fn create(b: *std.Build, target: std.Build.ResolvedTarget, optimize: std.builtin.OptimizeMode, sanitize_c: ?std.zig.SanitizeC) ?*std.Build.Step.Compile {
+    const lib = b.addLibrary(.{
+        .linkage = .static,
+        .name = "z",
+        .root_module = b.createModule(.{
+            .target = target,
+            .optimize = optimize,
+            .link_libc = true,
+            .sanitize_c = sanitize_c,
+        }),
+    });
+    const zlib_dep = b.lazyDependency("zlib", .{
+        .target = target,
+        .optimize = optimize,
+    }) orelse return null;
+
+    inline for (srcs) |s| {
+        lib.root_module.addCSourceFiles(.{
+            .root = zlib_dep.path(""),
+            .files = &.{s},
+            .flags = &.{"-std=c89"},
+        });
+    }
+    lib.installHeader(zlib_dep.path("zlib.h"), "zlib.h");
+    lib.installHeader(zlib_dep.path("zconf.h"), "zconf.h");
+    return lib;
+}
+
+const srcs = &.{
+    "adler32.c",
+    "compress.c",
+    "crc32.c",
+    "deflate.c",
+    "gzclose.c",
+    "gzlib.c",
+    "gzread.c",
+    "gzwrite.c",
+    "inflate.c",
+    "infback.c",
+    "inftrees.c",
+    "inffast.c",
+    "trees.c",
+    "uncompr.c",
+    "zutil.c",
+};

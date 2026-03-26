@@ -1,0 +1,45 @@
+{% block "title" %}ReVeste — Faça sua Doação{% end %}
+
+{% block "content" %}
+<section class="cta-section" id="doar">
+    <div class="cta-container">
+        <div class="cta-text">
+            <h2>Sua doação muda tudo</h2>
+            <p>Cada contribuição financeira nos ajuda a manter as operações, contratar equipe e expandir para mais cidades. Juntos, construímos um futuro mais justo.</p>
+        </div>
+        <div class="donation-form" id="donation-form-container">
+            <form hx-post="/doar" hx-target="#donation-form-container" hx-swap="innerHTML">
+                <label class="form-label">Escolha um valor para contribuir</label>
+                <div class="amount-buttons">
+                    <button type="button" class="amount-btn active" onclick="selectAmount(this, 25)">R$ 25</button>
+                    <button type="button" class="amount-btn" onclick="selectAmount(this, 50)">R$ 50</button>
+                    <button type="button" class="amount-btn" onclick="selectAmount(this, 100)">R$ 100</button>
+                    <button type="button" class="amount-btn other" onclick="selectAmount(this, 'other')">Outro</button>
+                </div>
+                <input type="hidden" name="amount" id="donation-amount" value="25">
+                <div class="form-row">
+                    <input type="text" name="name" class="form-input" placeholder="Seu nome" required>
+                </div>
+                <div class="form-row">
+                    <input type="email" name="email" class="form-input" placeholder="Seu e-mail" required>
+                </div>
+                <button type="submit" class="btn-submit">Contribuir</button>
+            </form>
+            <div class="cta-secondary">
+                <a href="/agendar" hx-get="/agendar" hx-target="#schedule-section" hx-swap="innerHTML">Ou agende coleta de roupas gratuitamente</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="schedule-section" id="schedule-section">
+</section>
+
+<script>
+function selectAmount(btn, value) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('donation-amount').value = value;
+}
+</script>
+{% end %}
