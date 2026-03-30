@@ -24,7 +24,7 @@ pub fn main(init: std.process.Init) !void {
         .get("/como-funciona", comoFuncionaHandler)
         .get("/sobre", sobreHandler)
         .get("/doar", doarPageHandler)
-        .post("/doar", doarHandler)
+        // .post("/doar", doarHandler) // comentado temporariamente
         .get("/agendar", agendarHandler)
         .post("/agendar", agendarSubmitHandler)
         .get("/api/ultima-doacao", ultimaDoacaoHandler)
@@ -71,8 +71,8 @@ fn ultimaDoacaoHandler(alc: std.mem.Allocator, req: *spider.Request) !spider.Res
 }
 
 fn doarHandler(alc: std.mem.Allocator, req: *spider.Request) !spider.Response {
-    const partial = @embedFile("views/partials/doacao-sucesso.html");
-    return spider.renderView(alc, req, partial, .{});
+    const view = @embedFile("views/doar.html");
+    return spider.renderView(alc, req, view, .{ .current = "/doar" });
 }
 
 fn agendarHandler(alc: std.mem.Allocator, req: *spider.Request) !spider.Response {
