@@ -33,8 +33,8 @@
     // internet connectivity.
     .dependencies = .{
         .spider = .{
-            .url = "git+https://github.com/llllOllOOll/spider#951a20da0922545e0cafbe073109e9de76d6de95",
-            .hash = "spider-0.3.0-RIctlVlyAwBII9ew6GSCEFkREpoVXKHkzotfflIiAlF2",
+            .url = "git+https://github.com/llllOllOOll/spider#2bd69c48f66326ff31aaf6e7e1326373d2e5df46",
+            .hash = "spider-0.3.0-RIctlZXGAwAna036458xHPjCCizZEC_jIrhx1m5ckWK7",
         },
     },
     .paths = .{
