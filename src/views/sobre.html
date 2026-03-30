@@ -2,13 +2,19 @@
 
 {% block "content" %}
 <style>
+.sobre-hero-wrapper { position: relative; width: 100%; }
 .sobre-hero {
   position: relative;
   height: 200px;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
+}
+.sobre-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
   padding: 0 64px 32px;
+  width: 100%;
 }
 .sobre-hero-bg {
   position: absolute;
@@ -87,6 +93,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
+  padding-top: 56px;
   margin-bottom: 56px;
   align-items: start;
 }
@@ -151,7 +158,20 @@
 .sobre-mvv-col {
   padding: 32px;
   position: relative;
+  background: #fff;
+  border-radius: 6px;
+  border: 1.5px solid rgba(0,0,0,0.07);
 }
+.sobre-mvv-col::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  border-radius: 6px 0 0 6px;
+}
+.sobre-mvv-col:nth-child(1)::before { background: #c94030; }
+.sobre-mvv-col:nth-child(2)::before { background: #457b9d; }
+.sobre-mvv-col:nth-child(3)::before { background: #f4a261; }
 .sobre-mvv-col:not(:last-child)::after {
   content: '';
   position: absolute;
@@ -193,14 +213,42 @@
   line-height: 1.6;
 }
 
+.sobre-cta-wrapper { width: 100%; }
 .sobre-cta {
-  background: #1a1a1a;
+  position: relative;
+  background: #1c2e22;
   border-radius: 12px;
   padding: 48px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
+}
+.sobre-cta-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  width: 100%;
+}
+.sobre-cta-bg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1px;
+  opacity: 0.20;
+  pointer-events: none;
+  z-index: 0;
+}
+.sobre-cta-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
 }
 
 .sobre-cta-content h3 {
@@ -234,15 +282,78 @@
   text-decoration: none;
   transition: background 0.2s, transform 0.2s;
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 .sobre-cta-btn:hover {
   background: #b33626;
   transform: translateY(-2px);
 }
 
+.sobre-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 64px;
+  margin-bottom: 48px;
+}
+.sobre-div-piece {
+  height: 6px;
+  border-radius: 3px;
+}
+
+.sobre-close {
+  position: relative;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 48px;
+  overflow: hidden;
+  margin-top: 24px;
+}
+.sobre-close-bg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+.scp-patch { border-radius: 1px; }
+.sobre-close-content { position: relative; z-index: 2; text-align: center; }
+.sobre-close-tag {
+  display: inline-flex;
+  margin-bottom: 16px;
+  background: rgba(255,255,255,0.1);
+  border: 1px dashed rgba(255,255,255,0.3);
+  border-radius: 4px;
+  padding: 4px 12px;
+}
+.sobre-close-tag span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+.sobre-close p {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.sobre-close p strong { color: #7ec99a; font-style: normal; }
+
 @media (max-width: 768px) {
   .sobre-hero {
     height: 180px;
+  }
+  .sobre-hero-inner {
     padding: 0 24px 24px;
   }
   .sobre-hero-title {
@@ -273,25 +384,38 @@
     padding: 32px 24px;
     text-align: center;
   }
+  .sobre-cta-inner {
+    flex-direction: column;
+    text-align: center;
+  }
   .sobre-cta-content h3 {
     font-size: 22px;
+  }
+  .sobre-close {
+    padding: 32px 24px;
+  }
+  .sobre-close p {
+    font-size: 17px;
   }
 }
 </style>
 
-<div class="sobre-hero">
-  <div class="sobre-hero-bg" id="sobreHeroBg"></div>
-  <div class="sobre-hero-overlay"></div>
-  <div class="sobre-hero-content">
-    <div class="sobre-eyebrow">
-      <div class="sobre-eyebrow-line"></div>
-      <span>Sobre nós</span>
+<div class="sobre-hero-wrapper">
+  <div class="sobre-hero">
+    <div class="sobre-hero-bg" id="sobreHeroBg"></div>
+    <div class="sobre-hero-overlay"></div>
+    <div class="sobre-hero-inner">
+      <div class="sobre-hero-content">
+        <div class="sobre-eyebrow">
+          <div class="sobre-eyebrow-line"></div>
+          <span>Sobre nós</span>
+        </div>
+        <h1 class="sobre-hero-title">Uma ideia que saiu do papel<br><em>e foi para as calçadas.</em></h1>
+      </div>
     </div>
-    <h1 class="sobre-hero-title">Uma ideia que saiu do papel<br><em>e foi para as calçadas.</em></h1>
   </div>
 </div>
 
-<div class="sobre-divider" id="sobreDivider"></div>
 
 <div class="sobre-body">
   <div class="sobre-intro">
@@ -302,7 +426,7 @@
       <p>Cada peça doada é uma chance de dignidade. Cada distribuição é um ato de enxergar quem muitas vezes é invisível.</p>
     </div>
     <div class="sobre-intro-right">
-      <div class="sobresobre-quote">
+      <div class="sobre-quote">
         <p>"Não é só sobre roupa. É sobre fazer alguém se sentir visto novamente."</p>
       </div>
       <div class="sobre-highlight">
@@ -310,6 +434,8 @@
       </div>
     </div>
   </div>
+
+  <div class="sobre-divider" id="sobreDivider2"></div>
 
   <div class="sobre-mvv">
     <div class="sobre-mvv-col">
@@ -329,12 +455,18 @@
     </div>
   </div>
 
+</div>
+
+<div class="sobre-cta-wrapper">
   <div class="sobre-cta">
-    <div class="sobre-cta-content">
-      <h3>Faça parte dessa mudança<br><em>junto com a gente.</em></h3>
-      <p>Cada doação, por menor que seja, transforma uma vida.</p>
+    <div class="sobre-cta-bg" id="sobreCtaBg"></div>
+    <div class="sobre-cta-inner">
+      <div class="sobre-cta-content">
+        <h3>Faça parte dessa mudança<br><em>junto com a gente.</em></h3>
+        <p>Cada doação, por menor que seja, transforma uma vida.</p>
+      </div>
+      <a href="/doar" class="sobre-cta-btn">Quero doar agora →</a>
     </div>
-    <a href="/doar" class="sobre-cta-btn">Quero doar agora →</a>
   </div>
 </div>
 
@@ -355,6 +487,20 @@ function fillSobreBg() {
 }
 fillSobreBg();
 
+function fillCtaBg() {
+  const bg = document.getElementById('sobreCtaBg');
+  if (!bg) return;
+  for (let i = 0; i < 100; i++) {
+    const d = document.createElement('div');
+    const c = _sobreColors[Math.floor(Math.random() * _sobreColors.length)];
+    const opts = [c, c, `repeating-linear-gradient(45deg,${c} 0 3px,transparent 3px 8px)`, `repeating-linear-gradient(0deg,${c} 0 2px,transparent 2px 6px)`];
+    d.style.background = opts[Math.floor(Math.random() * opts.length)];
+    d.style.transform = `rotate(${(Math.random()-0.5)*10}deg)`;
+    bg.appendChild(d);
+  }
+}
+fillCtaBg();
+
 const _sdColors = ['#e63946','#f4a261','#e9c46a','#2d6a4f','#457b9d','#b5838d','#8ecae6','#c77dff'];
 const _sdivid = document.getElementById('sobreDivider');
 if (_sdivid) {
@@ -365,5 +511,30 @@ if (_sdivid) {
     _sdivid.appendChild(p);
   });
 }
+
+const _sdivid2 = document.getElementById('sobreDivider2');
+if (_sdivid2) {
+  [48,32,64,24,56,40,72,28,52,36,60,44,38,66,30,54,42].forEach((w, i) => {
+    const p = document.createElement('div');
+    p.className = 'sobre-div-piece';
+    p.style.cssText = `width:${w}px;background:${_sdColors[i % _sdColors.length]};opacity:0.8;`;
+    _sdivid2.appendChild(p);
+  });
+}
+
+function fillCloseBg() {
+  const bg = document.getElementById('sobreCloseBg');
+  if (!bg) return;
+  for (let i = 0; i < 64; i++) {
+    const d = document.createElement('div');
+    d.className = 'scp-patch';
+    const c = _sobreColors[Math.floor(Math.random() * _sobreColors.length)];
+    const opts = [c, c, `repeating-linear-gradient(45deg,${c} 0 3px,transparent 3px 8px)`, `repeating-linear-gradient(0deg,${c} 0 2px,transparent 2px 6px)`];
+    d.style.background = opts[Math.floor(Math.random() * opts.length)];
+    d.style.transform = `rotate(${(Math.random()-0.5)*10}deg)`;
+    bg.appendChild(d);
+  }
+}
+fillCloseBg();
 </script>
 {% end %}

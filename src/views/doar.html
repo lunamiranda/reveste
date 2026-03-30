@@ -1,45 +1,153 @@
-{% block "title" %}ReVeste — Faça sua Doação{% end %}
+{% block "title" %}ReVeste — Doe Agora{% end %}
 
 {% block "content" %}
-<section class="cta-section" id="doar">
-    <div class="cta-container">
-        <div class="cta-text">
-            <h2>Sua doação muda tudo</h2>
-            <p>Cada contribuição financeira nos ajuda a manter as operações, contratar equipe e expandir para mais cidades. Juntos, construímos um futuro mais justo.</p>
-        </div>
-        <div class="donation-form" id="donation-form-container">
-            <form hx-post="/doar" hx-target="#donation-form-container" hx-swap="innerHTML">
-                <label class="form-label">Escolha um valor para contribuir</label>
-                <div class="amount-buttons">
-                    <button type="button" class="amount-btn active" onclick="selectAmount(this, 25)">R$ 25</button>
-                    <button type="button" class="amount-btn" onclick="selectAmount(this, 50)">R$ 50</button>
-                    <button type="button" class="amount-btn" onclick="selectAmount(this, 100)">R$ 100</button>
-                    <button type="button" class="amount-btn other" onclick="selectAmount(this, 'other')">Outro</button>
-                </div>
-                <input type="hidden" name="amount" id="donation-amount" value="25">
-                <div class="form-row">
-                    <input type="text" name="name" class="form-input" placeholder="Seu nome" required>
-                </div>
-                <div class="form-row">
-                    <input type="email" name="email" class="form-input" placeholder="Seu e-mail" required>
-                </div>
-                <button type="submit" class="btn-submit">Contribuir</button>
-            </form>
-            <div class="cta-secondary">
-                <a href="/agendar" hx-get="/agendar" hx-target="#schedule-section" hx-swap="innerHTML">Ou agende coleta de roupas gratuitamente</a>
-            </div>
-        </div>
+<!-- HERO -->
+<div class="doar-hero-wrapper">
+  <div class="doar-hero">
+    <div class="doar-hero-bg" id="doarHeroBg"></div>
+    <div class="doar-hero-overlay"></div>
+    <div class="doar-hero-inner">
+      <div class="doar-hero-content">
+        <div class="doar-eyebrow"><div class="doar-eyebrow-line"></div><span>Faça sua doação</span></div>
+        <h1 class="doar-hero-title">Uma peça sua pode<br><em>mudar uma história.</em></h1>
+      </div>
     </div>
-</section>
+  </div>
+</div>
 
-<section class="schedule-section" id="schedule-section">
-</section>
+<div class="doar-body">
+
+  <!-- CONTEXTO -->
+  <div class="doar-context">
+    <span class="doar-context-tag">Por que doar?</span>
+    <h2 class="doar-context-h2">Sua roupa parada<br>pode <em>vestir dignidade.</em></h2>
+    <p class="doar-context-p">Aquela peça que você não usa mais pode ser exatamente o que alguém nas ruas de Feira de Santana precisa para enfrentar o frio, uma entrevista, ou simplesmente se sentir humano.</p>
+    <p class="doar-context-p">Preencha o formulário ao lado. Nossa equipe entra em contato para combinar a coleta — vamos até você, sem custo nenhum.</p>
+
+    <div class="doar-promises">
+      
+      <div class="doar-promise doar-promise--green">
+        <div class="doar-promise-icon">♻️</div>
+        <div class="doar-promise-text"><strong>100% sem fins lucrativos.</strong> Cada peça vai direto para quem precisa — nada é vendido.</div>
+      </div>
+      <div class="doar-promise doar-promise--blue">
+        <div class="doar-promise-icon">📸</div>
+        <div class="doar-promise-text"><strong>Você acompanha o impacto.</strong> Registramos cada entrega e compartilhamos com quem doou.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULÁRIO -->
+  <div class="doar-form-wrap">
+    <h3 class="doar-form-title">Quero fazer uma doação</h3>
+    <p class="doar-form-sub">Preencha os campos abaixo. Entraremos em contato em até 48h para combinar a coleta.</p>
+
+    <form hx-post="/doar" hx-target="#doar-form-result" hx-swap="innerHTML" id="doar-form-result">
+
+      <span class="form-section-label">Seus dados</span>
+
+      <div class="form-field">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" placeholder="Como podemos te chamar?" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+        </div>
+        <div class="form-field">
+          <label for="celular">Celular / WhatsApp</label>
+          <input type="tel" id="celular" name="celular" placeholder="(75) 99999-9999" required>
+        </div>
+      </div>
+
+      <span class="form-section-label">Sobre as peças</span>
+
+      <div class="form-pecas">
+        <label class="form-peca-item">
+          <input type="checkbox" name="pecas" value="adulto">
+          <div class="form-peca-check"></div>
+          <span class="form-peca-label">👕 Adulto</span>
+        </label>
+        <label class="form-peca-item">
+          <input type="checkbox" name="pecas" value="infantil">
+          <div class="form-peca-check"></div>
+          <span class="form-peca-label">👶 Infantil</span>
+        </label>
+        <label class="form-peca-item">
+          <input type="checkbox" name="pecas" value="agasalho">
+          <div class="form-peca-check"></div>
+          <span class="form-peca-label">🧥 Agasalho</span>
+        </label>
+        <label class="form-peca-item">
+          <input type="checkbox" name="pecas" value="calcado">
+          <div class="form-peca-check"></div>
+          <span class="form-peca-label">👟 Sapato / Calçado</span>
+        </label>
+      </div>
+
+      <div class="form-field">
+        <label>Condição das peças</label>
+        <div class="form-condicao">
+          <label class="form-cond-btn">
+            <input type="radio" name="condicao" value="boa" checked> Boa
+          </label>
+          <label class="form-cond-btn">
+            <input type="radio" name="condicao" value="regular"> Regular
+          </label>
+          <label class="form-cond-btn">
+            <input type="radio" name="condicao" value="mista"> Mista
+          </label>
+        </div>
+      </div>
+
+      <span class="form-section-label">Localização para coleta</span>
+
+      <div class="form-field">
+        <label for="bairro">Bairro / Ponto de referência</label>
+        <input type="text" id="bairro" name="bairro" placeholder="Ex: Ponto Central, perto da Feira do Mel..." required>
+      </div>
+
+      <div class="form-field">
+        <label for="obs">Observações (opcional)</label>
+        <textarea id="obs" name="obs" placeholder="Quantidade aproximada de peças, melhor horário..."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Confirmar doação →</button>
+      <p class="form-note">Seus dados ficam salvos apenas para uso interno do ReVeste. Sem spam, sem venda de dados.</p>
+
+    </form>
+  </div>
+
+</div>
 
 <script>
-function selectAmount(btn, value) {
-    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('donation-amount').value = value;
-}
+  const _dhc=['#e63946','#457b9d','#2d6a4f','#f4a261','#8ecae6','#e9c46a','#b5838d','#6d6875','#264653','#f77f00','#c77dff','#4cc9f0','#90be6d','#43aa8b','#e07a5f','#ff6b6b'];
+  const _dhel=document.getElementById('doarHeroBg');
+  for(let i=0;i<120;i++){
+    const d=document.createElement('div');d.className='dh-patch';
+    const c=_dhc[Math.floor(Math.random()*_dhc.length)];
+    const opts=[c,c,`repeating-linear-gradient(45deg,${c} 0 3px,transparent 3px 8px)`,`repeating-linear-gradient(0deg,${c} 0 2px,transparent 2px 6px)`];
+    d.style.background=opts[Math.floor(Math.random()*opts.length)];
+    d.style.transform=`rotate(${(Math.random()-0.5)*10}deg)`;
+    _dhel.appendChild(d);
+  }
+
+  document.querySelectorAll('.form-peca-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const cb = item.querySelector('input');
+      cb.checked = !cb.checked;
+      item.classList.toggle('selected', cb.checked);
+    });
+  });
+
+  document.querySelectorAll('.form-cond-btn input').forEach(radio => {
+    radio.addEventListener('change', () => {
+      document.querySelectorAll('.form-cond-btn').forEach(b => b.classList.remove('active'));
+      if(radio.checked) radio.closest('.form-cond-btn').classList.add('active');
+    });
+  });
+  document.querySelector('.form-cond-btn').classList.add('active');
 </script>
 {% end %}

@@ -2,12 +2,16 @@
 
 {% block "content" %}
 <!-- HERO STRIP -->
-<div class="cf-hero">
-  <div class="cf-hero-bg" id="cfHeroBg"></div>
-  <div class="cf-hero-overlay"></div>
-  <div class="cf-hero-content">
-    <div class="cf-eyebrow"><div class="cf-eyebrow-line"></div><span>Como funciona</span></div>
-    <h1 class="cf-hero-title">Do armário à calçada —<br>cada passo com <em>cuidado.</em></h1>
+<div class="cf-hero-wrapper">
+  <div class="cf-hero">
+    <div class="cf-hero-bg" id="cfHeroBg"></div>
+    <div class="cf-hero-overlay"></div>
+    <div class="cf-hero-inner">
+      <div class="cf-hero-content">
+        <div class="cf-eyebrow"><div class="cf-eyebrow-line"></div><span>Como funciona</span></div>
+        <h1 class="cf-hero-title">Do armário à calçada —<br>cada passo com <em>cuidado.</em></h1>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -47,27 +51,25 @@
       </div>
     </div>
 
-    <div class="cf-step">
-      <div class="cf-step-card">
-        <span class="cf-step-tag cf-step-tag--4">Passo 4</span>
-        <h4>Você acompanha o impacto</h4>
-        <p>Registramos cada ação com fotos e dados reais. Compartilhamos com quem doou — porque <strong>transparência é parte da nossa causa.</strong></p>
-      </div>
-    </div>
 
   </div>
 
+</div>
+
+<!-- FECHAMENTO -->
+<div class="cf-close-wrapper">
   <div class="cf-close">
     <div class="cf-close-bg" id="cfCloseBg"></div>
-    <div class="cf-close-content">
-      <div class="cf-close-tag"><span>Simples assim</span></div>
-      <p>Você doa. A gente cuida do resto. <strong>Juntos, cada peça vira dignidade</strong> para quem está nas ruas da nossa cidade.</p>
-    </div>
-    <div class="cf-close-cta">
-      <a href="/doar" class="cf-close-btn">Quero fazer parte →</a>
+    <div class="cf-close-inner">
+      <div class="cf-close-content">
+        <div class="cf-close-tag"><span>Simples assim</span></div>
+        <p>Você doa. A gente cuida do resto. <strong>Juntos, cada peça vira dignidade</strong> para quem está nas ruas da nossa cidade.</p>
+      </div>
+      <div class="cf-close-cta">
+        <a href="/doar" class="cf-close-btn">Quero fazer parte →</a>
+      </div>
     </div>
   </div>
-
 </div>
 
 <script>

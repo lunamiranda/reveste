@@ -2,12 +2,16 @@
 
 {% block "content" %}
 <!-- HERO STRIP -->
-<div class="sol-hero">
-  <div class="sol-hero-bg" id="solHeroBg"></div>
-  <div class="sol-hero-overlay"></div>
-  <div class="sol-hero-content">
-    <div class="sol-eyebrow"><div class="sol-eyebrow-line"></div><span>A Solução</span></div>
-    <h1 class="sol-hero-title">Simples de doar.<br><em>Transformador</em> de receber.</h1>
+<div class="sol-hero-wrapper">
+  <div class="sol-hero">
+    <div class="sol-hero-bg" id="solHeroBg"></div>
+    <div class="sol-hero-overlay"></div>
+    <div class="sol-hero-inner">
+      <div class="sol-hero-content">
+        <div class="sol-eyebrow"><div class="sol-eyebrow-line"></div><span>A Solução</span></div>
+        <h1 class="sol-hero-title">Simples de doar.<br><em>Transformador</em> de receber.</h1>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -75,18 +79,22 @@
     </div>
   </div>
 
-  <!-- FECHAMENTO -->
+</div>
+
+<!-- FECHAMENTO -->
+<div class="sol-close-wrapper">
   <div class="sol-close">
     <div class="sol-close-bg" id="solCloseBg"></div>
-    <div class="sol-close-content">
-      <div class="sol-close-tag"><span>Viabilidade</span></div>
-      <p>O projeto funciona com <strong>doações voluntárias e parcerias comunitárias</strong> — sem altos custos, sem complexidade, com impacto real e imediato.</p>
-    </div>
-    <div class="sol-close-cta">
-      <a href="/doar" class="sol-close-btn">Quero doar agora →</a>
+    <div class="sol-close-inner">
+      <div class="sol-close-content">
+        <div class="sol-close-tag"><span>Viabilidade</span></div>
+        <p>O projeto funciona com <strong>doações voluntárias e parcerias comunitárias</strong> — sem altos custos, sem complexidade, com impacto real e imediato.</p>
+      </div>
+      <div class="sol-close-cta">
+        <a href="/doar" class="sol-close-btn">Quero doar agora →</a>
+      </div>
     </div>
   </div>
-
 </div>
 
 <script>
