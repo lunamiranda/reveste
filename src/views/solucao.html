@@ -1,29 +1,116 @@
-{% block "title" %}ReVeste — Nossa Solução{% end %}
+{% block "title" %}ReVeste — A Solução{% end %}
 
 {% block "content" %}
-<section class="section solucao" id="solucao">
-    <h2 class="section-title solucao-title">Simples como quatro passos</h2>
-    <div class="solucao-steps">
-        <div class="step-card">
-            <div class="step-number step-1">1</div>
-            <h3>Agende a coleta</h3>
-            <p>Informe as peças que quer doar. Buscamos na sua casa, de graça.</p>
-        </div>
-        <div class="step-card">
-            <div class="step-number step-2">2</div>
-            <h3>Separamos e higienizamos</h3>
-            <p>Nossa equipe tria, limpa e prepara cada peça com cuidado.</p>
-        </div>
-        <div class="step-card">
-            <div class="step-number step-3">3</div>
-            <h3>Distribuímos às ONGs</h3>
-            <p>Parceiros parceiros verificados recebem as doações adequadamente.</p>
-        </div>
-        <div class="step-card">
-            <div class="step-number step-4">4</div>
-            <h3>Você acompanha o impacto</h3>
-            <p>Receba relatórios e fotos de como sua doação fez diferença.</p>
-        </div>
+<!-- HERO STRIP -->
+<div class="sol-hero">
+  <div class="sol-hero-bg" id="solHeroBg"></div>
+  <div class="sol-hero-overlay"></div>
+  <div class="sol-hero-content">
+    <div class="sol-eyebrow"><div class="sol-eyebrow-line"></div><span>A Solução</span></div>
+    <h1 class="sol-hero-title">Simples de doar.<br><em>Transformador</em> de receber.</h1>
+  </div>
+</div>
+
+<div class="sol-body">
+
+  <!-- PONTE PROBLEMA → SOLUÇÃO -->
+  <div class="sol-bridge">
+    <div class="sol-bridge-left">
+      <span class="sol-bridge-left-tag">O problema identificado</span>
+      <h3>Pessoas em situação de rua sem acesso a roupas adequadas — o que afeta sua dignidade, saúde e proteção.</h3>
+      <p>Falta de políticas eficazes, negligência pública e pouca mobilização social perpetuam esse ciclo.</p>
     </div>
-</section>
+    <div class="sol-bridge-arrow"></div>
+    <div class="sol-bridge-right">
+      <span class="sol-bridge-right-tag">Nossa resposta</span>
+      <h3>Conectar quem pode dar com quem precisa receber — de forma direta, gratuita e sem burocracia.</h3>
+      <p>Coleta, triagem e distribuição organizadas por estudantes com propósito social real.</p>
+    </div>
+  </div>
+
+  <!-- DIVISOR -->
+  <div class="sol-divider" id="solDivider"></div>
+
+  <!-- PASSOS -->
+  <p class="sol-steps-title">Como funciona na prática</p>
+  <div class="sol-steps">
+    <div class="sol-step">
+      <div class="sol-step-num"><span>1</span></div>
+      <h4>Você anuncia a doação</h4>
+      <p>Informe as peças que quer doar. Combinaremos um local de coleta.</p>
+    </div>
+    <div class="sol-step">
+      <div class="sol-step-num"><span>2</span></div>
+      <h4>Triamos</h4>
+      <p>Nossa equipe seleciona e prepara cada peça com cuidado antes da distribuição.</p>
+    </div>
+    <div class="sol-step">
+      <div class="sol-step-num"><span>3</span></div>
+      <h4>Entregamos diretamente</h4>
+      <p>As roupas vão direto para moradores de rua — sem intermediários, sem desvios, com dignidade.</p>
+    </div>
+    <div class="sol-step">
+      <div class="sol-step-num"><span>4</span></div>
+      <h4>Você acompanha o impacto</h4>
+      <p>Registramos cada ação e compartilhamos com quem doou — porque transparência faz parte da nossa causa.</p>
+    </div>
+  </div>
+
+  <!-- DIFERENCIAIS -->
+  <div class="sol-diff">
+    <div class="sol-diff-card sol-diff-card--red">
+      <span class="sol-diff-label">Diferencial</span>
+      <h4>Sem burocracia</h4>
+      <p>Nenhum formulário complicado, nenhuma exigência. Qualquer pessoa pode doar — e qualquer peça em bom estado faz diferença.</p>
+    </div>
+    <div class="sol-diff-card sol-diff-card--orange">
+      <span class="sol-diff-label">Diferencial</span>
+      <h4>Entrega direta</h4>
+      <p>Não dependemos de terceiros para a distribuição, garantindo que a doação chegue a quem precisa.</p>
+    </div>
+    <div class="sol-diff-card sol-diff-card--green">
+      <span class="sol-diff-label">Diferencial</span>
+      <h4>100% sem fins lucrativos</h4>
+      <p>Não é brecho, não é bazar. Toda peça coletada é doada. O único lucro aqui é o impacto social que geramos juntos.</p>
+    </div>
+  </div>
+
+  <!-- FECHAMENTO -->
+  <div class="sol-close">
+    <div class="sol-close-bg" id="solCloseBg"></div>
+    <div class="sol-close-content">
+      <div class="sol-close-tag"><span>Viabilidade</span></div>
+      <p>O projeto funciona com <strong>doações voluntárias e parcerias comunitárias</strong> — sem altos custos, sem complexidade, com impacto real e imediato.</p>
+    </div>
+    <div class="sol-close-cta">
+      <a href="/doar" class="sol-close-btn">Quero doar agora →</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const _sc = ['#e63946','#457b9d','#2d6a4f','#f4a261','#8ecae6','#e9c46a','#b5838d','#6d6875','#264653','#f77f00','#c77dff','#4cc9f0','#90be6d','#43aa8b','#e07a5f','#ff6b6b','#118ab2','#ffd166'];
+  function solFillG(id, count, cls) {
+    const el = document.getElementById(id); if(!el) return;
+    for(let i=0;i<count;i++){
+      const d=document.createElement('div'); d.className=cls;
+      const c=_sc[Math.floor(Math.random()*_sc.length)];
+      const opts=[c,c,`repeating-linear-gradient(45deg,${c} 0 3px,transparent 3px 8px)`,`repeating-linear-gradient(0deg,${c} 0 2px,transparent 2px 6px)`];
+      d.style.background=opts[Math.floor(Math.random()*opts.length)];
+      d.style.transform=`rotate(${(Math.random()-0.5)*10}deg)`;
+      el.appendChild(d);
+    }
+  }
+  solFillG('solHeroBg',120,'sh-patch');
+  solFillG('solCloseBg',48,'sc-patch');
+
+  const _sdc=['#e63946','#f4a261','#e9c46a','#2d6a4f','#457b9d','#b5838d','#8ecae6','#c77dff','#90be6d','#ff6b6b'];
+  const _sdiv=document.getElementById('solDivider');
+  [48,32,64,24,56,40,72,28,52,36,60,44,38,66,30,54,42].forEach((w,i)=>{
+    const p=document.createElement('div'); p.className='sol-div-piece';
+    p.style.cssText=`width:${w}px;background:${_sdc[i%_sdc.length]};opacity:${0.4+Math.random()*0.5};`;
+    _sdiv.appendChild(p);
+  });
+</script>
 {% end %}

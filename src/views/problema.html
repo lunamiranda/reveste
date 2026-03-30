@@ -1,32 +1,84 @@
 {% block "title" %}ReVeste — O Problema{% end %}
 
 {% block "content" %}
-<section class="section problema" id="problema">
-    <p class="section-label">O PROBLEMA</p>
-    <div class="problema-grid">
-        <div class="problema-text">
-            <h2 class="section-title">A moda é o 2º setor mais <em>poluente</em> do mundo</h2>
-            <p>Todos os anos, bilhões de peças de roupa são descartadas. A maioria vai para aterros sanitários, onde pode levar séculos para se decompor. Enquanto isso, milhões de pessoas em situação de vulnerabilidade não têm acesso a roupas básicas.</p>
-            <p style="margin-top: 1rem;">O problema não é apenas ambiental — é social. A moda rápida criou um ciclo de desperdício que afeta planeta e pessoas.</p>
-        </div>
-        <div class="problema-cards">
-            <div class="stat-card stat-card-1">
-                <div class="stat-card-number">175mil</div>
-                <div class="stat-card-label">toneladas de resíduos têxteis por ano no Brasil</div>
-            </div>
-            <div class="stat-card stat-card-2">
-                <div class="stat-card-number">80%</div>
-                <div class="stat-card-label">das doações não chegam ao destino final</div>
-            </div>
-            <div class="stat-card stat-card-3">
-                <div class="stat-card-number">14kg</div>
-                <div class="stat-card-label">de roupa descartada por brasileiro/ano</div>
-            </div>
-            <div class="stat-card stat-card-4">
-                <div class="stat-card-number">20%</div>
-                <div class="stat-card-label">da poluição industrial mundial vem do setor têxtil</div>
-            </div>
-        </div>
+<!-- HERO STRIP -->
+<div class="prob-hero">
+  <div class="prob-hero-bg" id="heroBg"></div>
+  <div class="prob-hero-overlay"></div>
+  <div class="prob-hero-content">
+    <div class="prob-eyebrow">
+      <div class="prob-eyebrow-line"></div>
+      <span>O Problema</span>
     </div>
-</section>
+    <h1 class="prob-hero-title">Quem está nas ruas<br>não pode ser <em>invisível.</em></h1>
+  </div>
+</div>
+
+<!-- CORPO -->
+<div class="prob-body">
+
+  <div class="prob-intro">
+    <div class="prob-intro-left">
+      <p class="prob-lead">
+        A população em situação de rua vem crescendo no Brasil — e essa realidade também está presente em <strong>Feira de Santana.</strong>
+      </p>
+      <p class="prob-text">
+        Muitas pessoas vivem sem acesso ao básico: alimentação, higiene, saúde e um lugar seguro para dormir. Além disso, enfrentam preconceito, violência e a indiferença da sociedade, o que aumenta ainda mais sua vulnerabilidade.
+      </p>
+    </div>
+    <div class="prob-intro-right">
+      <div class="prob-callout prob-callout--red">
+        <p><strong>Abrigos insuficientes, serviços limitados.</strong> Os equipamentos públicos não conseguem atender toda a demanda — e muitas dessas pessoas não possuem documentos, dificultando qualquer tentativa de recomeço.</p>
+      </div>
+      <div class="prob-callout prob-callout--blue">
+        <p><strong>Dados que somem junto com as pessoas.</strong> A ausência de registros precisos evidencia outro problema: essas pessoas nem sempre são contabilizadas, o que dificulta a criação de políticas eficazes.</p>
+      </div>
+      <div class="prob-callout prob-callout--green">
+        <p><strong>Um ciclo difícil de romper.</strong> Sem documentos, sem endereço, sem apoio contínuo — o caminho para a reinserção social tem obstáculos que vão muito além da vontade individual.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="prob-divider" id="probDivider"></div>
+
+  <div class="prob-close">
+    <div class="prob-close-bg" id="closeBg"></div>
+    <div class="prob-close-content">
+      <div class="prob-close-tag"><span>Nossa conclusão</span></div>
+      <p>Esse não é apenas um problema de moradia. É uma questão de <strong>desigualdade, exclusão e ausência de direitos.</strong> Olhar para essas pessoas com empatia é o primeiro passo — o segundo é agir.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const _colors = ['#e63946','#457b9d','#2d6a4f','#f4a261','#8ecae6','#e9c46a','#b5838d','#6d6875','#264653','#f77f00','#c77dff','#4cc9f0','#90be6d','#43aa8b','#e07a5f','#ff6b6b','#118ab2','#ffd166'];
+
+  function fillGrid(id, count, patchClass) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    for (let i = 0; i < count; i++) {
+      const d = document.createElement('div');
+      d.className = patchClass;
+      const c = _colors[Math.floor(Math.random() * _colors.length)];
+      const opts = [c, c, `repeating-linear-gradient(45deg,${c} 0 3px,transparent 3px 8px)`, `repeating-linear-gradient(0deg,${c} 0 2px,transparent 2px 6px)`];
+      d.style.background = opts[Math.floor(Math.random() * opts.length)];
+      d.style.transform = `rotate(${(Math.random()-0.5)*10}deg)`;
+      el.appendChild(d);
+    }
+  }
+
+  fillGrid('heroBg', 120, 'ph-patch');
+  fillGrid('closeBg', 64, 'pc-patch');
+
+  const _divColors = ['#e63946','#f4a261','#e9c46a','#2d6a4f','#457b9d','#b5838d','#8ecae6','#c77dff','#90be6d','#ff6b6b'];
+  const _divider = document.getElementById('probDivider');
+  const _widths = [48,32,64,24,56,40,72,28,52,36,60,44,38,66,30,54,42];
+  _widths.forEach((w, i) => {
+    const p = document.createElement('div');
+    p.className = 'prob-div-piece';
+    p.style.cssText = `width:${w}px;background:${_divColors[i % _divColors.length]};opacity:${0.5 + Math.random()*0.4};`;
+    _divider.appendChild(p);
+  });
+</script>
 {% end %}

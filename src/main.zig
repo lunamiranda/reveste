@@ -22,7 +22,6 @@ pub fn main(init: std.process.Init) !void {
         .get("/problema", problemaHandler)
         .get("/solucao", solucaoHandler)
         .get("/como-funciona", comoFuncionaHandler)
-        .get("/impacto", impactoHandler)
         .get("/sobre", sobreHandler)
         .get("/doar", doarPageHandler)
         .post("/doar", doarHandler)
@@ -54,11 +53,6 @@ fn solucaoHandler(alc: std.mem.Allocator, req: *spider.Request) !spider.Response
 fn comoFuncionaHandler(alc: std.mem.Allocator, req: *spider.Request) !spider.Response {
     const view = @embedFile("views/como-funciona.html");
     return spider.renderView(alc, req, view, .{ .current = "/como-funciona" });
-}
-
-fn impactoHandler(alc: std.mem.Allocator, req: *spider.Request) !spider.Response {
-    const view = @embedFile("views/impacto.html");
-    return spider.renderView(alc, req, view, .{ .current = "/impacto" });
 }
 
 fn sobreHandler(alc: std.mem.Allocator, req: *spider.Request) !spider.Response {

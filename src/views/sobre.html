@@ -1,47 +1,369 @@
 {% block "title" %}ReVeste — Sobre Nós{% end %}
 
 {% block "content" %}
-<section class="section sobre" id="sobre">
-    <p class="section-label">SOBRE NÓS</p>
-    <h2 class="section-title">Transformando roupas em oportunidade</h2>
-    <div class="sobre-grid">
-        <div class="sobre-text">
-            <p>A ReVeste nasceu em 2020 com uma missão simples: reduzir o desperdício de roupas no Brasil enquanto ajudamos milhões de pessoas em situação de vulnerabilidade.</p>
-            <p>Somos uma organização sem fins lucrativos que conecta quem quer doar a quem precisa. Acreditamos que cada peça de roupa tem valor — seja para quem wearing ela com dignidade, seja para o meio ambiente.</p>
-            <p>Nossa equipe é formada por profissionais dedicados à causa social e ambiental. Parcerias com mais de 200 ONGs garantem que as doações cheguem a quem mais precisa.</p>
-        </div>
-        <div class="sobre-values">
-            <div class="value-card">
-                <h3>🎯 Missão</h3>
-                <p>Reduzir o impacto ambiental da indústria da moda e promover inclusão social através da redistribuição de roupas.</p>
-            </div>
-            <div class="value-card">
-                <h3>🌱 Visão</h3>
-                <p>Um Brasil onde nenhuma peça de roupa é desperdiçada e todos têm acesso a vestimentas básicas.</p>
-            </div>
-            <div class="value-card">
-                <h3>❤️ Valores</h3>
-                <p>Sustentabilidade, transparência, impacto social, parceria e respeito à dignidade humana.</p>
-            </div>
-        </div>
+<style>
+.sobre-hero {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 64px 32px;
+}
+.sobre-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: #1c2e22;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1.5px;
+}
+.sobre-patch {
+  border-radius: 1px;
+  opacity: 0.35;
+}
+.sobre-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(20,30,25,0.88) 0%, rgba(20,30,25,0.5) 60%, rgba(20,30,25,0.75) 100%);
+}
+.sobre-hero-content {
+  position: relative;
+  z-index: 2;
+}
+.sobre-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.sobre-eyebrow-line {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: repeating-linear-gradient(90deg, #e63946 0 8px, #2d6a4f 8px 16px, #457b9d 16px 24px, #e9c46a 24px 28px);
+}
+.sobre-eyebrow span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+.sobre-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+.sobre-hero-title em {
+  color: #7ec99a;
+  font-style: italic;
+}
+
+.sobre-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 64px;
+  margin-bottom: 48px;
+}
+.sobre-div-piece {
+  height: 5px;
+  border-radius: 2px;
+}
+
+.sobre-body {
+  padding: 0 64px 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.sobre-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+  align-items: start;
+}
+
+.sobre-intro-left h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d2520;
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+
+.sobre-intro-left p {
+  font-size: 15px;
+  color: #4a4040;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.sobre-intro-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sobre-quote {
+  background: #fff;
+  border-left: 4px solid #2d6a4f;
+  padding: 20px 24px;
+  border-radius: 0 8px 8px 0;
+}
+.sobre-quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: #2d2520;
+  line-height: 1.6;
+}
+
+.sobre-highlight {
+  background: #2d5741;
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+.sobre-highlight p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.7;
+}
+.sobre-highlight strong {
+  color: #fff;
+}
+
+.sobre-mvv {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-bottom: 56px;
+}
+
+.sobre-mvv-col {
+  padding: 32px;
+  position: relative;
+}
+.sobre-mvv-col:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(0,0,0,0.1);
+}
+
+.sobre-mvv-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.sobre-mvv-icon--missao { background: #fef3f2; }
+.sobre-mvv-icon--visao { background: #f0fdf4; }
+.sobre-mvv-icon--valores { background: #eff6ff; }
+
+.sobre-mvv-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.sobre-mvv-col:nth-child(1) .sobre-mvv-label { color: #e63946; }
+.sobre-mvv-col:nth-child(2) .sobre-mvv-label { color: #2d6a4f; }
+.sobre-mvv-col:nth-child(3) .sobre-mvv-label { color: #457b9d; }
+
+.sobre-mvv-text {
+  font-size: 15px;
+  color: #4a4040;
+  line-height: 1.6;
+}
+
+.sobre-cta {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.sobre-cta-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.sobre-cta-content h3 em {
+  color: #7ec99a;
+  font-style: italic;
+}
+.sobre-cta-content p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  max-width: 480px;
+}
+
+.sobre-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #c94030;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+.sobre-cta-btn:hover {
+  background: #b33626;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .sobre-hero {
+    height: 180px;
+    padding: 0 24px 24px;
+  }
+  .sobre-hero-title {
+    font-size: 28px;
+  }
+  .sobre-divider {
+    padding: 0 24px;
+  }
+  .sobre-body {
+    padding: 0 24px 32px;
+  }
+  .sobre-intro {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .sobre-mvv {
+    grid-template-columns: 1fr;
+  }
+  .sobre-mvv-col:not(:last-child)::after {
+    display: none;
+  }
+  .sobre-mvv-col {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .sobre-cta {
+    flex-direction: column;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .sobre-cta-content h3 {
+    font-size: 22px;
+  }
+}
+</style>
+
+<div class="sobre-hero">
+  <div class="sobre-hero-bg" id="sobreHeroBg"></div>
+  <div class="sobre-hero-overlay"></div>
+  <div class="sobre-hero-content">
+    <div class="sobre-eyebrow">
+      <div class="sobre-eyebrow-line"></div>
+      <span>Sobre nós</span>
     </div>
-    <div class="sobre-stats">
-        <div class="stat-item">
-            <div class="stat-number">200+</div>
-            <div class="stat-desc">ONGs parceiras</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">50+</div>
-            <div class="stat-desc">Cidades atendidas</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">84k</div>
-            <div class="stat-desc">Peças doadas</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">12k</div>
-            <div class="stat-desc">Famílias impactadas</div>
-        </div>
+    <h1 class="sobre-hero-title">Uma ideia que saiu do papel<br><em>e foi para as calçadas.</em></h1>
+  </div>
+</div>
+
+<div class="sobre-divider" id="sobreDivider"></div>
+
+<div class="sobre-body">
+  <div class="sobre-intro">
+    <div class="sobre-intro-left">
+      <h2>Conectando quem quer doar com quem precisa receber</h2>
+      <p>O ReVeste nasceu de uma pergunta simples: por que tantas roupas boas vão para o fundo do guarda-roupa enquanto tantas pessoas passam frio nas ruas?</p>
+      <p>Somos um projeto estudantil de ação social que coleta doações de roupas e as distribui diretamente para moradores de rua em Feira de Santana. Não somos bazar, não somos brecho — somos pura solidariedade.</p>
+      <p>Cada peça doada é uma chance de dignidade. Cada distribuição é um ato de enxergar quem muitas vezes é invisível.</p>
     </div>
-</section>
+    <div class="sobre-intro-right">
+      <div class="sobresobre-quote">
+        <p>"Não é só sobre roupa. É sobre fazer alguém se sentir visto novamente."</p>
+      </div>
+      <div class="sobre-highlight">
+        <p><strong>Siga nossa jornada:</strong> publique seu impacto nas redes e marque @reveste.feiradesantana para inspirar outras pessoas a participarem.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sobre-mvv">
+    <div class="sobre-mvv-col">
+      <div class="sobre-mvv-icon sobre-mvv-icon--missao">🎯</div>
+      <div class="sobre-mvv-label">Missão</div>
+      <p class="sobre-mvv-text">Arrecadar e disponibilizar roupas para pessoas em situação de rua de forma acessível, promovendo dignidade e autonomia.</p>
+    </div>
+    <div class="sobre-mvv-col">
+      <div class="sobre-mvv-icon sobre-mvv-icon--visao">🌱</div>
+      <div class="sobre-mvv-label">Visão</div>
+      <p class="sobre-mvv-text">Incentivar uma cultura de solidariedade onde ajudar o próximo se torne parte natural do cotidiano.</p>
+    </div>
+    <div class="sobre-mvv-col">
+      <div class="sobre-mvv-icon sobre-mvv-icon--valores">❤️</div>
+      <div class="sobre-mvv-label">Valores</div>
+      <p class="sobre-mvv-text">Empatia · Solidariedade · Respeito · Acessibilidade · Compromisso social</p>
+    </div>
+  </div>
+
+  <div class="sobre-cta">
+    <div class="sobre-cta-content">
+      <h3>Faça parte dessa mudança<br><em>junto com a gente.</em></h3>
+      <p>Cada doação, por menor que seja, transforma uma vida.</p>
+    </div>
+    <a href="/doar" class="sobre-cta-btn">Quero doar agora →</a>
+  </div>
+</div>
+
+<script>
+const _sobreColors = ['#e63946','#457b9d','#2d6a4f','#f4a261','#8ecae6','#e9c46a','#b5838d','#6d6875','#264653','#f77f00'];
+function fillSobreBg() {
+  const bg = document.getElementById('sobreHeroBg');
+  if (!bg) return;
+  for (let i = 0; i < 120; i++) {
+    const d = document.createElement('div');
+    d.className = 'sobre-patch';
+    const c = _sobreColors[Math.floor(Math.random() * _sobreColors.length)];
+    const opts = [c, c, `repeating-linear-gradient(45deg,${c} 0 3px,transparent 3px 8px)`, `repeating-linear-gradient(0deg,${c} 0 2px,transparent 2px 6px)`];
+    d.style.background = opts[Math.floor(Math.random() * opts.length)];
+    d.style.transform = `rotate(${(Math.random()-0.5)*10}deg)`;
+    bg.appendChild(d);
+  }
+}
+fillSobreBg();
+
+const _sdColors = ['#e63946','#f4a261','#e9c46a','#2d6a4f','#457b9d','#b5838d','#8ecae6','#c77dff'];
+const _sdivid = document.getElementById('sobreDivider');
+if (_sdivid) {
+  [48,32,64,24,56,40,72,28,52,36,60,44,38,66,30,54,42].forEach((w, i) => {
+    const p = document.createElement('div');
+    p.className = 'sobre-div-piece';
+    p.style.cssText = `width:${w}px;background:${_sdColors[i % _sdColors.length]};opacity:0.8;`;
+    _sdivid.appendChild(p);
+  });
+}
+</script>
 {% end %}

@@ -1,35 +1,97 @@
 {% block "title" %}ReVeste — Como Funciona{% end %}
 
 {% block "content" %}
-<section class="section como-funciona" id="como-funciona">
-    <p class="section-label">COMO FUNCIONA</p>
-    <h2 class="section-title">Transformamos roupas em impacto social</h2>
-    <div class="como-funciona-grid">
-        <div class="como-funciona-step">
-            <div class="step-icon">📱</div>
-            <h3>1. Agende</h3>
-            <p>Use nosso app ou site para agendar a coleta. Informe quantidade e tipo de roupas.</p>
-        </div>
-        <div class="como-funciona-step">
-            <div class="step-icon">🚚</div>
-            <h3>2. Coletamos</h3>
-            <p>Nossa equipe busca as roupas no endereço combinado, de forma gratuita.</p>
-        </div>
-        <div class="como-funciona-step">
-            <div class="step-icon">♻️</div>
-            <h3>3. Triamos</h3>
-            <p>Separamos por tipo, condição e tamanho. Roupas em bom estado vão para doação.</p>
-        </div>
-        <div class="como-funciona-step">
-            <div class="step-icon">🤝</div>
-            <h3>4. Doamos</h3>
-            <p>Parceiros verificados recebem as doações e entregam a quem mais precisa.</p>
-        </div>
-        <div class="como-funciona-step">
-            <div class="step-icon">📊</div>
-            <h3>5. Acompanhe</h3>
-            <p>Receba relatórios e fotos do impacto da sua doação.</p>
-        </div>
+<!-- HERO STRIP -->
+<div class="cf-hero">
+  <div class="cf-hero-bg" id="cfHeroBg"></div>
+  <div class="cf-hero-overlay"></div>
+  <div class="cf-hero-content">
+    <div class="cf-eyebrow"><div class="cf-eyebrow-line"></div><span>Como funciona</span></div>
+    <h1 class="cf-hero-title">Do armário à calçada —<br>cada passo com <em>cuidado.</em></h1>
+  </div>
+</div>
+
+<div class="cf-body">
+
+  <div class="cf-intro">
+    <span class="cf-intro-label">A jornada da doação</span>
+    <p>Cada peça que você doa passa por um processo simples, <strong>transparente e humano</strong> — até chegar em quem mais precisa.</p>
+  </div>
+
+  <div class="cf-divider" id="cfDivider"></div>
+
+  <div class="cf-timeline">
+
+    <div class="cf-step">
+      <div class="cf-step-card">
+        <span class="cf-step-tag cf-step-tag--1">Passo 1</span>
+        <h4>Você anuncia a doação</h4>
+        <p>Entre em contato pelo site ou pelas nossas redes sociais. Nos conte <strong>quantas peças</strong> tem e a gente combina a coleta.</p>
+      </div>
     </div>
-</section>
+
+    
+    <div class="cf-step">
+      <div class="cf-step-card">
+        <span class="cf-step-tag cf-step-tag--2">Passo 2</span>
+        <h4>Triamos</h4>
+        <p>Cada peça é analisada por condição, tipo e tamanho. As que estão em bom estado são <strong> separadas</strong> para distribuição com dignidade.</p>
+      </div>
+    </div>
+
+    <div class="cf-step">
+      <div class="cf-step-card">
+        <span class="cf-step-tag cf-step-tag--3">Passo 3</span>
+        <h4>Entregamos diretamente</h4>
+        <p>As roupas são distribuidas nas ruas de Feira de Santana. <strong>Sem intermediários</strong> — a roupa vai direto para quem precisa, com respeito e acolhimento.</p>
+      </div>
+    </div>
+
+    <div class="cf-step">
+      <div class="cf-step-card">
+        <span class="cf-step-tag cf-step-tag--4">Passo 4</span>
+        <h4>Você acompanha o impacto</h4>
+        <p>Registramos cada ação com fotos e dados reais. Compartilhamos com quem doou — porque <strong>transparência é parte da nossa causa.</strong></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cf-close">
+    <div class="cf-close-bg" id="cfCloseBg"></div>
+    <div class="cf-close-content">
+      <div class="cf-close-tag"><span>Simples assim</span></div>
+      <p>Você doa. A gente cuida do resto. <strong>Juntos, cada peça vira dignidade</strong> para quem está nas ruas da nossa cidade.</p>
+    </div>
+    <div class="cf-close-cta">
+      <a href="/doar" class="cf-close-btn">Quero fazer parte →</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const _cfc=['#e63946','#457b9d','#2d6a4f','#f4a261','#8ecae6','#e9c46a','#b5838d','#6d6875','#264653','#f77f00','#c77dff','#4cc9f0','#90be6d','#43aa8b','#e07a5f','#ff6b6b','#118ab2','#ffd166'];
+  function cfFill(id,count,cls){
+    const el=document.getElementById(id);if(!el)return;
+    for(let i=0;i<count;i++){
+      const d=document.createElement('div');d.className=cls;
+      const c=_cfc[Math.floor(Math.random()*_cfc.length)];
+      const opts=[c,c,`repeating-linear-gradient(45deg,${c} 0 3px,transparent 3px 8px)`,`repeating-linear-gradient(0deg,${c} 0 2px,transparent 2px 6px)`];
+      d.style.background=opts[Math.floor(Math.random()*opts.length)];
+      d.style.transform=`rotate(${(Math.random()-0.5)*10}deg)`;
+      el.appendChild(d);
+    }
+  }
+  cfFill('cfHeroBg',120,'cfh-patch');
+  cfFill('cfCloseBg',48,'cfc-patch');
+
+  const _cfd=['#e63946','#f4a261','#e9c46a','#2d6a4f','#457b9d','#b5838d','#8ecae6','#c77dff','#90be6d','#ff6b6b'];
+  const _cdiv=document.getElementById('cfDivider');
+  [36,52,28,64,40,56,32,48,44,60,38,54,30,66,42,50,34].forEach((w,i)=>{
+    const p=document.createElement('div');p.className='cf-div-piece';
+    p.style.cssText=`width:${w}px;background:${_cfd[i%_cfd.length]};opacity:${0.4+Math.random()*0.5};`;
+    _cdiv.appendChild(p);
+  });
+</script>
 {% end %}
